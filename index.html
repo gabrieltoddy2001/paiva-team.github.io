@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sistema de gestão para a academia Paiva Team. Controle de alunos, turmas, financeiro e graduações."
+    />
+    <!-- URL da API do backend será configurada aqui futuramente -->
+    <meta name="api-base-url" content="" />
+    <title>Paiva Team | Gestão</title>
+    
+    <link rel="icon" href="assets/logo-ico.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <!-- Sprite de Ícones SVG (Formatado para melhor leitura) -->
+    <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="icon-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+      </symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="17" rx="2"/>
+        <path d="M16 2v4M8 2v4M3 10h18"/>
+      </symbol>
+      <symbol id="icon-wallet" viewBox="0 0 24 24">
+        <path d="M20 7V5a2 2 0 0 0-2-2H5a3 3 0 0 0 0 6h15v10a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6"/>
+        <path d="M16 13h4"/>
+      </symbol>
+      <symbol id="icon-checklist" viewBox="0 0 24 24">
+        <path d="M9 6h11M9 12h11M9 18h11"/>
+        <path d="m3 6 1 1 2-2m-3 7 1 1 2-2m-3 7 1 1 2-2"/>
+      </symbol>
+      <symbol id="icon-belt" viewBox="0 0 24 24">
+        <path d="M3 9h18v6H3z"/>
+        <path d="m8 9 3 3-3 3M16 9l-3 3 3 3"/>
+        <path d="M3 11H1v2h2m18-2h2v2h-2"/>
+      </symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24">
+        <path d="M3 3v18h18"/>
+        <path d="m7 16 4-5 3 2 5-7"/>
+      </symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.06.06-2.12 2.12-.06-.06a1.8 1.8 0 0 0-1.98-.36 1.8 1.8 0 0 0-1.1 1.66v.1h-3v-.1A1.8 1.8 0 0 0 10.5 18.7a1.8 1.8 0 0 0-1.98.36l-.06.06-2.12-2.12.06-.06A1.8 1.8 0 0 0 6.76 15a1.8 1.8 0 0 0-1.66-1.1H5v-3h.1a1.8 1.8 0 0 0 1.66-1.1 1.8 1.8 0 0 0-.36-1.98l-.06-.06 2.12-2.12.06.06a1.8 1.8 0 0 0 1.98.36A1.8 1.8 0 0 0 11.6 4.4v-.1h3v.1a1.8 1.8 0 0 0 1.1 1.66 1.8 1.8 0 0 0 1.98-.36l.06-.06 2.12 2.12-.06.06a1.8 1.8 0 0 0-.36 1.98 1.8 1.8 0 0 0 1.66 1.1h.1v3H21a1.8 1.8 0 0 0-1.6 1.1Z"/>
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14"/>
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </symbol>
+      <symbol id="icon-filter" viewBox="0 0 24 24">
+        <path d="M4 5h16M7 12h10M10 19h4"/>
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>
+      </symbol>
+      <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m9 18 6-6-6-6"/>
+      </symbol>
+      <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+        <path d="M12 19V5M6 11l6-6 6 6"/>
+      </symbol>
+      <symbol id="icon-arrow-down" viewBox="0 0 24 24">
+        <path d="M12 5v14m6-6-6 6-6-6"/>
+      </symbol>
+      <symbol id="icon-more" viewBox="0 0 24 24">
+        <circle cx="5" cy="12" r="1" fill="currentColor"/>
+        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+        <circle cx="19" cy="12" r="1" fill="currentColor"/>
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18"/>
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </symbol>
+      <symbol id="icon-log-out" viewBox="0 0 24 24">
+        <path d="M10 17l5-5-5-5M15 12H3M21 19V5a2 2 0 0 0-2-2h-7"/>
+      </symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </symbol>
+      <symbol id="icon-pencil" viewBox="0 0 24 24">
+        <path d="M12 20h9"/>
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/>
+      </symbol>
+      <symbol id="icon-download" viewBox="0 0 24 24">
+        <path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/>
+      </symbol>
+      <symbol id="icon-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M12 11v5M12 8h.01"/>
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="11" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+      </symbol>
+    </svg>
+
+    <!-- Estrutura Principal do App -->
+    <div class="app-shell" id="app-shell">
+      
+      <!-- Menu Lateral -->
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <img class="brand-logo" src="assets/paiva-team.png" alt="Paiva Team" />
+          <button class="sidebar-close" type="button" data-action="close-menu" aria-label="Fechar menu lateral">
+            <svg><use href="#icon-close" /></svg>
+          </button>
+        </div>
+        
+        <div class="academy-chip">
+          <span class="academy-dot"></span> Paiva Team · Unidade Centro
+        </div>
+        
+        <nav class="nav-list" aria-label="Navegação principal">
+          <p class="nav-label">VISÃO GERAL</p>
+          <button class="nav-item active" data-page="dashboard">
+            <svg><use href="#icon-grid" /></svg><span>Dashboard</span>
+          </button>
+          
+          <p class="nav-label">GESTÃO</p>
+          <button class="nav-item" data-page="alunos">
+            <svg><use href="#icon-users" /></svg><span>Alunos</span>
+          </button>
+          <button class="nav-item" data-page="turmas">
+            <svg><use href="#icon-calendar" /></svg><span>Turmas</span>
+          </button>
+          <button class="nav-item" data-page="financeiro">
+            <svg><use href="#icon-wallet" /></svg><span>Financeiro</span><b class="nav-pill">8</b>
+          </button>
+          <button class="nav-item" data-page="presenca">
+            <svg><use href="#icon-checklist" /></svg><span>Presença</span>
+          </button>
+          <button class="nav-item" data-page="graduacoes">
+            <svg><use href="#icon-belt" /></svg><span>Graduações</span>
+          </button>
+          
+          <p class="nav-label">ANÁLISE</p>
+          <button class="nav-item" data-page="relatorios">
+            <svg><use href="#icon-chart" /></svg><span>Relatórios</span>
+          </button>
+          <button class="nav-item" data-page="configuracoes">
+            <svg><use href="#icon-settings" /></svg><span>Configurações</span>
+          </button>
+        </nav>
+        
+        <div class="sidebar-bottom">
+          <div class="support-card">
+            <div class="support-icon"><svg><use href="#icon-shield" /></svg></div>
+            <div><b>Ambiente seguro</b><span>Dados protegidos</span></div>
+          </div>
+          <button class="user-card" data-action="logout">
+            <span class="avatar avatar-admin">CM</span>
+            <span><b>Caio Martins</b><small>Administrador</small></span>
+            <svg><use href="#icon-more" /></svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Backdrop para mobile -->
+      <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" data-action="close-menu" aria-label="Fechar menu lateral" hidden></button>
+      
+      <!-- Conteúdo Principal -->
+      <main class="main-content">
+        <header class="topbar">
+          <button class="icon-button mobile-only" data-action="toggle-menu" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menu">
+            <svg><use href="#icon-menu" /></svg>
+          </button>
+          
+          <div class="page-heading">
+            <p id="header-eyebrow">OPERAÇÃO DO DIA</p>
+            <h1 id="page-title">Dashboard</h1>
+          </div>
+          
+          <div class="topbar-actions">
+            <button class="date-chip" data-action="open-calendar">
+              <svg><use href="#icon-calendar" /></svg>
+              <span>Outubro, 2026</span>
+              <svg class="chevron"><use href="#icon-chevron" /></svg>
+            </button>
+            <button class="icon-button notification" data-action="notifications" aria-label="Notificações">
+              <svg><use href="#icon-bell" /></svg><i></i>
+            </button>
+            <button class="create-button" data-action="open-student">
+              <svg><use href="#icon-plus" /></svg><span>Novo aluno</span>
+            </button>
+          </div>
+        </header>
+        
+        <!-- Onde as telas dinâmicas serão injetadas pelo JS -->
+        <section class="view" id="view" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <!-- Áreas para Modais e Notificações (Toasts) -->
+    <div class="modal-root" id="modal-root"></div>
+    <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+    
+    <!-- Script Principal -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
